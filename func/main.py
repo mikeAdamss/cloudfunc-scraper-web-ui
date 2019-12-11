@@ -16,7 +16,7 @@ def serve_main_page():
 
     <h2>Simple Scraper Form</h2>
 
-    <form action="{this_url}">
+    <form action="{}">
       Try and scrape a link and see what happens:<br>
       <br>
       Url:<br>
