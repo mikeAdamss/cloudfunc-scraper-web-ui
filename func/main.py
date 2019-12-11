@@ -57,7 +57,7 @@ def serve_result_page(url):
 
 def main(request):
 
-    os.chdir('/tmp')"
+    os.chdir('/tmp')
     try:
         url = request.args.get('target-url')
         if url != "" and url != None:
