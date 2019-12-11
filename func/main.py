@@ -14,10 +14,15 @@ def serve_main_page():
     <html>
     <body>
 
-    <h2>Simple Scraper Form</h2>
+    <h2>Scraper Trial UI</h2>
 
     <form action="{}">
-      Try and scrape a link and see what happens:<br>
+      Scrape a link and and you'll get one of:<br>
+      <ul>
+        <li>If we have a scraper and it works, you'll get a json document showing what it scraped.</li>
+        <li>If we don't have a scraper, it'll say.</li>
+        <li>If you get a different error, it's broke, or this tool is.</li>
+    </ul>
       <br>
       Url:<br>
       <input type="text" name="target-url" width="100%">
@@ -52,6 +57,7 @@ def serve_result_page(url):
 
 def main(request):
 
+    os.chdir('/tmp')"
     try:
         url = request.args.get('target-url')
         if url != "" and url != None:
