@@ -20,7 +20,7 @@ def serve_main_page():
       Try and scrape a link and see what happens:<br>
       <br>
       Url:<br>
-      <input type="text" name="target-url" width:100%>
+      <input type="text" name="target-url" width="100%">
 
       <input type="submit" value="Submit">
     </form>
