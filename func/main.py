@@ -25,7 +25,7 @@ def serve_main_page():
     </ul>
       <br>
       Url:<br>
-      <input type="text" name="target-url" width="100%">
+      <input type="text" name="target-url" width="100">
 
       <input type="submit" value="Submit">
     </form>
