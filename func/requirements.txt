@@ -1,1 +1,1 @@
-git+https://github.com/GSS-Cogs/gss-utils.git@v0.5.14
+git+https://github.com/GSS-Cogs/gss-utils.git@v0.5.19
