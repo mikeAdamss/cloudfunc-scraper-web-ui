@@ -81,9 +81,10 @@ def serve_result_page(url):
         {urls}
         <hr>
         <br<br>
-        Failing that, a basic "one off" scrape can be taken provided sufficiant explicit metadata
+        Failing that, a basic "temporary" scrape can be taken provided sufficiant explicit metadata
         for the following fields is provided:  "title", "description", "dataURL", "publisher", "published".
-        dataURL MUST point to a specific file.
+        <br>
+        <be>NOTE - for a "temporary" (from metadata only) scrape to work dataURL MUST point to a specific file.
         <br>
         """.format(url=url, e=e, trace=trace, urls="<br>".join(urls))
 
