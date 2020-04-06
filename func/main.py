@@ -71,22 +71,24 @@ def serve_result_page(url):
         return """
         <h3>Failure for url: {url}</h3>
         <hr>
-        {trace}
+        Stack trace: {trace}
         <br>
-        {e}
+        Exception: {e}
         <br>
-        The following are deployed scrapers that -should- work on every release of a given dataset.
         <hr>
         <br>
+        The following information is intended to help resolve the issue where it's a "No Scraper" problem.
+        <br>
+        These are the start url patterns for deployed scrapers. These scrapers should work on every release of a given dataset.
         <hr>
         {urls}
         <hr>
         <br<br>
-        Failing that, a basic "temporary" scrape can be taken provided sufficiant explicit metadata
+        Failing that, a basic "temporary" scrape can still be taken provided explicit metadata
         for the following fields is provided, namely: <br>
         "title", "description", "dataURL", "publisher", "published".
         <br>
-        <be>NOTE - for a "temporary" (from metadata only) scrape to work dataURL MUST point to a specific file.
+        <br>NOTE - for a "temporary" (from metadata only) scrape to work dataURL MUST point to a specific file.
         <br>
         """.format(url=url, e=e, trace=trace, urls="<br>".join(urls))
 
