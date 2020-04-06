@@ -78,7 +78,7 @@ def serve_result_page(url):
         <hr>
         <br>
         The following information is intended to help resolve the issue where it's a "No Scraper" problem.
-        <br>
+        <br><br>
         These are the start url patterns for deployed scrapers. These scrapers should work on every release of a given dataset.
         <hr>
         {urls}
