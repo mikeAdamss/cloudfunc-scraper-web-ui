@@ -76,11 +76,16 @@ def serve_result_page(url):
         {e}
         <br>
         The following are deployed scrapers that -should- work on every release of a given dataset.
+        <br>
+        <hr>
         {urls}
+        <hr>
+        <br<br>
         Failing that, a basic "one off" scrape can be taken provided sufficiant explicit metadata
         for the following fields is provided:  "title", "description", "dataURL", "publisher", "published".
+        dataURL MUST point to a specific file.
         <br>
-        """.format(url=url, e=e, trace=trace, urls="\n".join(urls))
+        """.format(url=url, e=e, trace=trace, urls="<br>".join(urls))
 
 def main(request):
 
