@@ -76,13 +76,15 @@ def serve_result_page(url):
         {e}
         <br>
         The following are deployed scrapers that -should- work on every release of a given dataset.
+        <hr>
         <br>
         <hr>
         {urls}
         <hr>
         <br<br>
         Failing that, a basic "temporary" scrape can be taken provided sufficiant explicit metadata
-        for the following fields is provided:  "title", "description", "dataURL", "publisher", "published".
+        for the following fields is provided, namely: <br>
+        "title", "description", "dataURL", "publisher", "published".
         <br>
         <be>NOTE - for a "temporary" (from metadata only) scrape to work dataURL MUST point to a specific file.
         <br>
