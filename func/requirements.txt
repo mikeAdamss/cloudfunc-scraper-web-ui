@@ -1,1 +1,2 @@
 git+https://github.com/GSS-Cogs/gss-utils.git
+requests==2.23.0

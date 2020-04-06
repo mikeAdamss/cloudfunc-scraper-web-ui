@@ -4,11 +4,15 @@ import json
 import traceback
 import sys
 import os
+import requests  # probably dont need this, investigate
 
 from parser import parse_scrape_to_json
 
 def serve_main_page():
+
+    # Nasty hack to get a single endpoint to (re)call itself with params
     THIS_URL = os.environ["THIS_URL"]
+
     return """
     <!DOCTYPE html>
     <html>
@@ -46,6 +50,23 @@ def serve_result_page(url):
         return json.dumps(json_dict)
 
     except Exception as e:
+
+        # Get the full list of supported scrapers
+        try:
+            r = requests.get("https://raw.githubusercontent.com/GSS-Cogs/gss-utils/master/gssutils/scrapers/__init__.py")
+            if r.status_code != 200:
+                raise Exception("Failed to get deployed scraper urls from github")
+
+            text_dump = r.text
+            take = False
+            urls = []
+            for line in text_dump.split("\n"):
+                if "https" in line:
+                    urls.append(line.split("('")[1].split(",")[0])  # ewww
+        except:
+            urls = ["...unable to acquire..."]
+
+        # Give some sort of meanigful feedback
         trace = traceback.print_exc(file=sys.stdout)
         return """
         <h3>Failure for url: {url}</h3>
@@ -53,20 +74,28 @@ def serve_result_page(url):
         {trace}
         <br>
         {e}
-        """.format(url=url, e=e, trace=trace)
+        <br>
+        The following are deployed scrapers that -should- work on every release of a given dataset.
+        {urls}
+        Failing that, a basic "one off" scrape can be taken provided sufficiant explicit metadata
+        for the following fields is provided:  "title", "description", "dataURL", "publisher", "published".
+        <br>
+        """.format(url=url, e=e, trace=trace, urls="\n".join(urls))
 
 def main(request):
 
-    os.chdir('/tmp')
+    os.chdir('/tmp') # otherwise the cacher will blow up as the other paths
+                     # on a cloud function are read only.
+
     try:
+        # If url params contain "target-url" we're aiming to scrape
         url = request.args.get('target-url')
         if url != "" and url != None:
-
             if not url.startswith("http://") and not url.startswith("https://"):
                 url = "http://"+url
-
             return serve_result_page(url)
     except:
         raise
 
+    # Server the splash page
     return serve_main_page()
