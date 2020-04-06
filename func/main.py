@@ -84,10 +84,13 @@ def serve_result_page(url):
         {urls}
         <hr>
         <br<br>
-        Failing that, a basic "temporary" scrape can still be taken provided explicit metadata
-        for the following fields is provided, namely: <br>
+        Failing that, a basic "temporary" scrape can still be used (not here...yet, but as part of a pipeline) if explicit metadata
+        for the following fields is provided.<br>
         "title", "description", "dataURL", "publisher", "published".
-        <br>
+        <br><br>
+        Those fields will get synced from airtable to the github info.json which will suffice to develop the pipeline and extract THAT
+        SPECIFIC DISTRIBUTION of the dataset (so a task to develop a fully repeatable pipeline should also be created/highlighted).
+        <br><br>
         <br>NOTE - for a "temporary" (from metadata only) scrape to work dataURL MUST point to a specific file.
         <br>
         """.format(url=url, e=e, trace=trace, urls="<br>".join(urls))
