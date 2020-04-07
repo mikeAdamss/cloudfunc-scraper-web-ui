@@ -27,4 +27,4 @@ jobs:
         service_account_email: ${{ secrets.GCP_SA_EMAIL }}
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
-    - run: gcloud info
+    - run: gcloud functions deploy cloudfunc-scraper-web-ui --runtime python37 --trigger-http --allow-unauthenticated
